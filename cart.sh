@@ -18,8 +18,7 @@ if [ $? -eq 0 ]; then
  fi
 
 id roboshop  &>>/tmp/cart.log
-# shellcheck disable=SC1073
-if [ $? -ne  0 ]; then
+if [ $? -ne 0 ]; then
   echo adding application user
    useradd roboshop &>> /tmp/cart.log
     if [ $? -eq 0 ]; then
