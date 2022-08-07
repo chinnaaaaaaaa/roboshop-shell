@@ -6,7 +6,7 @@ yum install mysql-community-server -y
 systemctl enable mysqld
 systemctl start mysqld
 
-grep temp /var/log/mysqld.log.
+grep temp /var/log/mysqld.log
 
 mysql_secure_installation
 
