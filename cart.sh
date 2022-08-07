@@ -4,6 +4,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
   else
   echo -e "\e[31mFAILURE\e[0m"
+  exit
  fi
 
 
@@ -13,6 +14,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
   else
   echo -e "\e[31mFAILURE\e[0m"
+  exit
  fi
 
 echo adding application user
@@ -21,6 +23,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
   else
   echo -e "\e[31mFAILURE\e[0m"
+  exit
  fi
 
 echo downloading the applicant content
@@ -30,6 +33,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
   else
   echo -e "\e[31mFAILURE\e[0m"
+  exit
  fi
 
 echo cleaning old application
@@ -38,6 +42,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
   else
   echo -e "\e[31mFAILURE\e[0m"
+  exit
  fi
 
 echo extrat application archive
@@ -48,6 +53,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
   else
   echo -e "\e[31mFAILURE\e[0m"
+  exit
  fi
 
 echo instaling nodejs dependencies
@@ -56,6 +62,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
   else
   echo -e "\e[31mFAILURE\e[0m"
+  exit
  fi
 
 echo confirouing cart systemD service
@@ -64,6 +71,7 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
   else
   echo -e "\e[31mFAILURE\e[0m"
+  exit
  fi
 
 echo starting cart services
@@ -74,4 +82,5 @@ if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
   else
   echo -e "\e[31mFAILURE\e[0m"
+  exit
  fi
