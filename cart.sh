@@ -18,11 +18,12 @@ if [ $? -eq 0 ]; then
  fi
 
 id roboshop  &>>/tmp/cart.log
+# shellcheck disable=SC1073
 if [ $? -ne  0 ]; then
   echo adding application user
    useradd roboshop &>> /tmp/cart.log
     if [ $? -eq 0 ]; then
-   echo -e "\e[32mSUCCESS\e[0m"
+  echo -e "\e[32mSUCCESS\e[0m"
   else
    echo -e "\e[31mFAILURE\e[0m"
   exit 1
