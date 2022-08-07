@@ -13,7 +13,7 @@ echo "alter user 'root'@'localhost' identified with mysql_native_password by 'Ro
 
 mysql_secure_installation
 
-mysql -uroot -pRoboShop@1
+echo  "uninstall plugin validate_password;" | mysql -uroot -pRoboShop@1
 
 #> uninstall plugin validate_password;
 
