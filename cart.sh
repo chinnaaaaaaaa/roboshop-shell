@@ -5,7 +5,7 @@ if [ $? -eq 0 ]; then
   else
   echo -e "\e[31mFAILURE\e[0m"
   exit 1
- fi
+fi
 
 
 echo instaling nodejs
@@ -15,7 +15,7 @@ if [ $? -eq 0 ]; then
   else
     echo -e "\e[31mFAILURE\e[0m"
   exit 1
- fi
+fi
 
 id roboshop  &>>/tmp/cart.log
 if [ $? -ne 0 ]; then
@@ -23,10 +23,10 @@ if [ $? -ne 0 ]; then
    useradd roboshop &>> /tmp/cart.log
     if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
-  else
-   echo -e "\e[31mFAILURE\e[0m"
-  exit 1
- fi
+    else
+  echo -e "\e[31mFAILURE\e[0m"
+    exit 1
+fi
 
 echo downloading the applicant content
 curl -s -L -o /tmp/cart.zip "https://github.com/roboshop-devops-project/cart/archive/main.zip" &>> /tmp/cart.log
@@ -36,7 +36,7 @@ if [ $? -eq 0 ]; then
   else
   echo -e "\e[31mFAILURE\e[0m"
   exit 1
- fi
+fi
 
 echo cleaning old application
 rm -rf cart &>> /tmp/cart.log
@@ -45,7 +45,7 @@ if [ $? -eq 0 ]; then
   else
   echo -e "\e[31mFAILURE\e[0m"
   exit 1
- fi
+fi
 
 echo extrat application archive
 unzip -o /tmp/cart.zip &>> /tmp/cart.log
@@ -56,7 +56,7 @@ if [ $? -eq 0 ]; then
   else
   echo -e "\e[31mFAILURE\e[0m"
   exit 1
- fi
+fi
 
 echo instaling nodejs dependencies
 npm install &>> /tmp/cart.log
@@ -65,7 +65,7 @@ if [ $? -eq 0 ]; then
   else
   echo -e "\e[31mFAILURE\e[0m"
   exit 1
- fi
+fi
 
 echo confirouing cart systemD service
 mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.service &>> /tmp/cart.log
@@ -74,7 +74,7 @@ if [ $? -eq 0 ]; then
   else
   echo -e "\e[31mFAILURE\e[0m"
   exit 1
- fi
+fi
 
 echo starting cart services
 systemctl daemon-reload &>> /tmp/cart.log
