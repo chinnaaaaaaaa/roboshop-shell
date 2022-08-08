@@ -49,9 +49,7 @@ if [ $? -eq 0 ]; then
 fi
 
 echo extrat application archive
-unzip -o /tmp/cart.zip &>> /tmp/cart.log
-mv cart-main cart &>> /tmp/cart.log
-cd cart &>> /tmp/cart.log
+unzip -o /tmp/cart.zip &>> /tmp/cart.log && mv cart-main cart &>> /tmp/cart.log && cd cart &>> /tmp/cart.log
 if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
   else
@@ -69,7 +67,7 @@ if [ $? -eq 0 ]; then
 fi
 
 echo confirouing cart systemD service
-mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.service &>> /tmp/cart.log
+mv /home/roboshop/cart/systemd.service /etc/systemd/system/cart.service &>> /tmp/cart.log && systemctl daemon-reload &>> /tmp/cart.log
 if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
   else
@@ -78,9 +76,7 @@ if [ $? -eq 0 ]; then
 fi
 
 echo starting cart services
-systemctl daemon-reload &>> /tmp/cart.log
-systemctl start cart &>> /tmp/cart.log
-systemctl enable cart &>> /tmp/cart.log
+systemctl start cart &>> /tmp/cart.log && systemctl enable cart &>> /tmp/cart.log
 if [ $? -eq 0 ]; then
   echo -e "\e[32mSUCCESS\e[0m"
 else
