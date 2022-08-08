@@ -1,4 +1,4 @@
-soure common.sh
+source common.sh
 
 COMPONENT=catalogue
 NODEJS
