@@ -41,4 +41,12 @@ StatusCheck
 echo instaling nodejs dependencies
 npm install &>> /tmp/${COMPONENT}.log
 StatusCheck
+
+echo confirouing ${COMPONENT} systemD service
+mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>> /tmp/${COMPONENT}.log && systemctl daemon-reload &>> /tmp/${COMPONENT}.log
+StatusCheck
+
+echo starting ${COMPONENT} services
+systemctl start ${COMPONENT} &>> /tmp/${COMPONENT}.log && systemctl enable ${COMPONENT} &>> /tmp/${COMPONENT}.log
+StatusCheck
  }
