@@ -17,7 +17,7 @@ if [ $? -eq 0 ]; then
   exit 1
 fi
 
-id roboshop  &>>/tmp/cart.log
+id roboshop &>>/tmp/cart.log
 if [ $? -ne 0 ]; then
   echo adding application user
    useradd roboshop &>> /tmp/cart.log
