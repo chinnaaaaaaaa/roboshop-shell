@@ -26,6 +26,7 @@ if [ $? -ne 0 ]; then
     else
   echo -e "\e[31mFAILURE\e[0m"
     exit 1
+    fi
 fi
 
 echo downloading the applicant content
