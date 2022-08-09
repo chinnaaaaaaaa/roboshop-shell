@@ -40,5 +40,5 @@ cd /tmp &>>${LOG} && unzip -o mysql.zip &>>${LOG} && cd mysql-main &>>${LOG}
 StatusCheck
 
 echo load schema
-mysql -u root -pRoboShop@1 <shipping.sql &>>${LOG}
+mysql -uroot -pRoboShop@1 <shipping.sql &>>${LOG}
 StatusCheck
