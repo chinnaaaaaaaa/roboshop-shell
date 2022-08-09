@@ -26,7 +26,7 @@ if [ $? -ne 0 ]; then
  StatusCheck
 fi
 
-echo  "show plugins;" | mysql -uroot -p$MYSQL_PASSWORD | grep validate_password
+echo  "show plugins;" | mysql -uroot -p$MYSQL_PASSWORD | grep validate_password &>>${LOG}
 if [ $? -eq 0 ]; then
    echo Remove Password Validate Plugin
    echo  "uninstall plugin validate_password;" | mysql -uroot -p$MYSQL_PASSWORD &>>${LOG}
@@ -40,5 +40,5 @@ cd /tmp &>>${LOG} && unzip -o mysql.zip &>>${LOG} && cd mysql-main &>>${LOG}
 StatusCheck
 
 echo load schema
-mysql -uroot -pRoboShop@1 <shipping.sql
+mysql -uroot -pRoboShop@1 <shipping.sql &>>${LOG}
 StatusCheck
