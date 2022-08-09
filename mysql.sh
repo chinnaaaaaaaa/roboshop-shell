@@ -32,7 +32,7 @@ if [ $? -eq 0 ]; then
    echo  "uninstall plugin validate_password;" | mysql -uroot -p$MYSQL_PASSWORD &>>${LOG}
  StatusCheck
 fi
-exit
+
 DOWNLOAD
 
 echo extract schema
@@ -40,5 +40,5 @@ cd /tmp &>>${LOG} && unzip -o mysql.zip &>>${LOG} && cd mysql-main &>>${LOG}
 StatusCheck
 
 echo load schema
-mysql -u root -pRoboShop@1 <shipping.sql
+mysql -u root -pRoboShop@1 <shipping.sql &>>${LOG}
 StatusCheck
