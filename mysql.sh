@@ -25,11 +25,14 @@ if [ $? -ne 0 ]; then
    echo "alter user 'root'@'localhost' identified with mysql_native_password by '$MYSQL_PASSWORD';" | mysql --connect-expired-password -uroot -p${DEFAULT_PASSWORD}
  StatusCheck
 fi
-exit
 
+echo "show plugins;" | mysql -uroot -p$MYSQL_PASSWORD &>>${LOG} | grep validate_password &>>${LOG}
+if [ $? -eq 0 ]; then
+   echo Remove Password Validate Plugin
+   echo  "uninstall plugin validate_password;" | mysql -uroot -p$MYSQL_PASSWORD
+ StatusCheck
+fi
 
-echo  "uninstall plugin validate_password;" | mysql -uroot -p$MYSQL_PASSWORD
-#> uninstall plugin validate_password;
 
 curl -s -L -o /tmp/mysql.zip "https://github.com/roboshop-devops-project/mysql/archive/main.zip"
 
