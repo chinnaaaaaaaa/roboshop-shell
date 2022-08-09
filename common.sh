@@ -12,7 +12,8 @@ StatusCheck() {
 DOWNLOAD() {
  echo downloading ${COMPONENT} applicant content
  curl -s -L -o /tmp/${COMPONENT}.zip "https://github.com/roboshop-devops-project/${COMPONENT}/archive/main.zip" &>> /tmp/${COMPONENT}.log
-  }
+ StatusCheck
+ }
 
 NODEJS() {
  echo instaling nodejs repos
