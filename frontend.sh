@@ -3,10 +3,11 @@ source common.sh
 COMPONENT=frontend
 
 echo installing Nginx
-yum install nginx -y
+yum install nginx -y &>>${LOG}
 StatusCheck
 
 DOWNLOAD
+
 echo Clean Old Content
 cd /usr/share/nginx/html && rm -rf *
 StatusCheck
