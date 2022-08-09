@@ -25,14 +25,14 @@ if [ $? -ne 0 ]; then
    echo "alter user 'root'@'localhost' identified with mysql_native_password by '$MYSQL_PASSWORD';" | mysql --connect-expired-password -u root -p${DEFAULT_PASSWORD} &>>${LOG}
  StatusCheck
 fi
-exit
+
 echo "show plugins;" | mysql -uroot -p$MYSQL_PASSWORD &>>${LOG} 2>&1 | grep validate_password &>>${LOG}
 if [ $? -eq 0 ]; then
    echo Remove Password Validate Plugin
    echo  "uninstall plugin validate_password;" | mysql -uroot -p$MYSQL_PASSWORD &>>${LOG}
  StatusCheck
 fi
-
+exit
 DOWNLOAD
 
 echo extract schema
