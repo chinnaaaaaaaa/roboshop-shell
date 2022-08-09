@@ -1,17 +1,28 @@
-set -e
-curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo
+source common.sh
 
-yum install -y mongodb-org
-systemctl enable mongod
-systemctl start mongod
+COMPONENT=mongodb
 
-systemctl restart mongod
+echo Set up YUM Repo
+curl -s -o /etc/yum.repos.d/mongodb.repo https://raw.githubusercontent.com/roboshop-devops-project/mongodb/main/mongo.repo &>>${LOG}
+StatusCheck
 
-curl -s -L -o /tmp/mongodb.zip "https://github.com/roboshop-devops-project/mongodb/archive/main.zip"
+echo YUM Install mongodb
+yum install -y mongodb-org &>>${LOG}
+StatusCheck
 
-cd /tmp
-unzip -o mongodb.zip
-cd mongodb-main
-mongo < catalogue.js
-mongo < users.js
+echo start mongodb services
+systemctl enable mongod &>>${LOG} && systemctl start mongod &>>${LOG}
+StatusCheck
+
+## Update the Listing IP Cofig
+
+DOWNLOAD
+
+echo "Extract the Schema Files"
+cd /tmp unzip -o mongodb.zip &>>${LOG}
+StatusCheck
+
+echo Load Schema
+cd mongodb-main && mongo < catalogue.js &>>${LOG} && mongo < users.js &>>${LOG}
+StatusCheck
 
