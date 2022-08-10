@@ -45,6 +45,7 @@ DOWNLOAD
  npm install &>> /tmp/${COMPONENT}.log
  StatusCheck
 
+
  echo confirouing ${COMPONENT} systemD service
  mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>> /tmp/${COMPONENT}.log && systemctl daemon-reload &>> /tmp/${COMPONENT}.log
  StatusCheck
