@@ -33,3 +33,11 @@ fi
    echo "uninstall plugin validate_password;" | mysql -uroot -p$MYSQL_PASSWORD &>>${LOG}
    StatusCheck
  fi
+
+ DOWNLOAD
+
+echo "Extract & load schema"
+cd /tmp &>>${LOG} && unzip -o mysql.zip &>>${LOG} && cd mysql-main &>>${LOG} && mysql -u root -pRoboShop@1 <shipping.sql &>>${LOG}
+StatusCheck
+
+
