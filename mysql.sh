@@ -19,3 +19,4 @@ StatusCheck
 
 DEFAULT_PASSWORD=$(grep  'A temporary password' /var/log/mysqld.log |awk '{print $NF}')
 echo "alter user 'root'@'localhost' identified with mysql_native_password by '$MYSQL_PSWWORD';" mysql --connect-expired-password -uroot -p${DEFAULT_PASSWORD}
+
