@@ -20,7 +20,6 @@ systemctl enable mysqld &>>${LOG} && systemctl start mysqld &>>${LOG}
 StatusCheck
 
 echo "show databases;" | mysql -uroot -p$MYSQL_PASSWORD &>>${LOG}
-
 if [ $? -ne 0 ]; then
    echo Changing Default Password
    DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
