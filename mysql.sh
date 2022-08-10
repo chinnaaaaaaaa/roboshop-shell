@@ -2,10 +2,7 @@ source common.sh
 
 COMPONENT=mysql
 
-if [ -z "$MYSQL_PSWWORD" ]; then
-  echo -e "\e[33m env variable MYSQL_PASSWORD missing \e[0m"
-  exit 1
-fi
+
 
 echo set YUM repos
 curl -s -L -o /etc/yum.repos.d/mysql.repo https://raw.githubusercontent.com/roboshop-devops-project/mysql/main/mysql.repo &>>${LOG}
