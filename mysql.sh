@@ -28,7 +28,7 @@ if [ $? -ne 0 ]; then
 fi
 
  echo "show plugins;" | mysql -uroot -p$MYSQL_PASSWORD 2>&1 | grep validate_password &>>${LOG}
- if [ $? -eg 0 ]; then
+ if [ $? -eq 0 ]; then
    echo Remove Password Validate Plugin
    echo "uninstall plugin validate_password;" | mysql -uroot -p$MYSQL_PASSWORD &>>${LOG}
    StatusCheck
