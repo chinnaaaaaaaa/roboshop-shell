@@ -13,3 +13,6 @@ StatusCheck
 echo start mysql servive
 systemctl enable mysqld &>>${LOG} && systemctl start mysqld &>>${LOG}
 StatusCheck
+
+DEFAULT_PASSWORD=$(grep 'A temporary password' /var/log/mysqld.log | awk '{print $NF}')
+echo "alter user 'root'@'localhost' identified with mysql_native_password by 'RoboShop@1';" | mysql -uroot -p${DEFAULT_PASSWORD}
