@@ -79,6 +79,21 @@ NODEJS() {
 
    }
 
+ PYTHON() {
+    echo instal python
+    yum install python36 gcc python3-devel -y &>>${LOG}
+    StatusCheck
+
+    APP_USER_SETUP
+    DOWNLOAD
+    APP_CLEAN
+
+    echo Install Python Dependencies
+    cd /home/roboshop/payment &>>${LOG} &&  pip3 install -r requirements.txt &>>${LOG}
+    StatusCheck
+
+  SYSTEMD
+  }
 
 USER_ID=$( id -u )
 if [ $USER_ID -ne 0 ]; then
@@ -87,3 +102,4 @@ if [ $USER_ID -ne 0 ]; then
 fi
 LOG=/tmp/${COMPONENT}.log
 rm -f ${LOG}
+
