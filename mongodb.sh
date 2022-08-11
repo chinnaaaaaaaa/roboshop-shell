@@ -14,7 +14,10 @@ echo start mongodb services
 systemctl enable mongod &>>${LOG} && systemctl start mongod &>>${LOG}
 StatusCheck
 
-## Update the Listing IP Config
+echo Update MongoDB Listen Address
+sed -i 's/127.0.0.1/0.0.0.0/' /etc/mongod.conf &>>${LOG}
+StatusCheck
+
 
 DOWNLOAD
 
