@@ -1,13 +1,20 @@
-set -e
-yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm -y
+source common.sh
 
-curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash
+COMPONENT=rabbitmq
 
-yum install rabbitmq-server -y
+echo Setup yum repos
+curl -s https://packagecloud.io/install/repositories/rabbitmq/rabbitmq-server/script.rpm.sh | sudo bash &>>${LOG}
+StatuCheck
 
-systemctl enable rabbitmq-server
-systemctl start rabbitmq-server
+echo "Instal RabbitMQ & Erlang"
+yum install https://github.com/rabbitmq/erlang-rpm/releases/download/v23.2.6/erlang-23.2.6-1.el7.x86_64.rpm rabbitmq-server -y  &>>${LOG}
+StatuCheck
 
-rabbitmqctl add_user roboshop roboshop123
-rabbitmqctl set_user_tags roboshop administrator
-rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*"
+echo Start RabbitMQ Service
+systemctl enable rabbitmq-server &>>${LOG} && systemctl start rabbitmq-server &>>${LOG}
+
+echo Add App User in RabbitMQ
+rabbitmqctl add_user roboshop roboshop123 &>>${LOG} && rabbitmqctl set_user_tags roboshop administrator &>>${LOG} && rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>${LOG}
+StatuCheck
+
+
