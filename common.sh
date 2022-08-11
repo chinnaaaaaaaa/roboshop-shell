@@ -21,6 +21,7 @@ id roboshop &>>${LOG}
      useradd roboshop &>> ${LOG}
      StatusCheck
  fi
+ }
  APP_CLEAN() {
  echo cleaning old application
  cd /home/roboshop &>> ${LOG} && rm -rf ${COMPONENT} &>> ${LOG}
@@ -29,7 +30,7 @@ id roboshop &>>${LOG}
  echo extrat application archive
  unzip -o /tmp/${COMPONENT}.zip &>> ${LOG} && mv ${COMPONENT}-main ${COMPONENT} &>> ${LOG} && cd ${COMPONENT} &>> ${LOG}
  StatusCheck
-}
+ }
 SYSTEMD() {
 echo confirouing ${COMPONENT} systemD service
  mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>> ${LOG} && systemctl daemon-reload &>> ${LOG}
