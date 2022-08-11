@@ -19,7 +19,7 @@ StatusCheck
 DOWNLOAD
 
 echo "Extract the Schema Files"
-cd /tmp unzip -o mongodb.zip &>>${LOG}
+cd /tmp && unzip -o mongodb.zip &>>${LOG}
 StatusCheck
 
 echo Load Schema
