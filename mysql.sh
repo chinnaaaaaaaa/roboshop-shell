@@ -1,6 +1,6 @@
-source common.sh
-
 COMPONENT=mysql
+
+source common.sh
 
  if [ -z "$MYSQL_PASSWORD" ]; then
   echo -e "\e[33m env variable MYSQL_PASSWORD missing \e[0m"

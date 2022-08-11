@@ -1,6 +1,8 @@
+COMPONENT=catalogue
+
 source common.sh
 
-COMPONENT=catalogue
+
 NODEJS
 
 

@@ -1,6 +1,6 @@
-source common.sh
+COMPONENT=reddis
 
-COMPONENT=cart
+source common.sh
 
 echo set up YUM repo
 curl -L https://raw.githubusercontent.com/roboshop-devops-project/redis/main/redis.repo -o /etc/yum.repos.d/redis.repo &>>${LOG}
