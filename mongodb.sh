@@ -14,7 +14,7 @@ echo start mongodb services
 systemctl enable mongod &>>${LOG} && systemctl start mongod &>>${LOG}
 StatusCheck
 
-## Update the Listing IP Cofig
+## Update the Listing IP Config
 
 DOWNLOAD
 
