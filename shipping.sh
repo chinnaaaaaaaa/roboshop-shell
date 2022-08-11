@@ -1,5 +1,11 @@
-set -e
-yum install maven -y
+source common.sh
+
+COMPONENT=shipping
+
+echo Install maven
+yum install maven -y &>>${LOG}
+StatusCheck
+
 
 useradd roboshop
 
