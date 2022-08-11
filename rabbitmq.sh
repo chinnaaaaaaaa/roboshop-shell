@@ -16,6 +16,7 @@ StatuCheck
 
 echo Start RabbitMQ Service
 systemctl enable rabbitmq-server &>>${LOG} && systemctl start rabbitmq-server &>>${LOG}
+StatuCheck
 
 echo Add App User in RabbitMQ
 rabbitmqctl add_user roboshop ${APP_RABBITMQ_PASSWORD} &>>${LOG} && rabbitmqctl set_user_tags roboshop administrator &>>${LOG} && rabbitmqctl set_permissions -p / roboshop ".*" ".*" ".*" &>>${LOG}
