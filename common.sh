@@ -84,6 +84,5 @@ if [ $USER_ID -ne 0 ]; then
   echo -e "\e[31m you should run this script as root user or sudo \e[0m"
   exit 1
 fi
-LOG=${LOG}
+LOG=/tmp/${COMPONENT}.log
 rm -f ${LOG}
-}
