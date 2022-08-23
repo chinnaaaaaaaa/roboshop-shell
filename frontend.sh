@@ -22,4 +22,5 @@ StatusCheck
 
 echo Start Nginx Service
 systemctl restart nginx &>>${LOG} && systemctl enable nginx &>>${LOG}
+
 StatusCheck
