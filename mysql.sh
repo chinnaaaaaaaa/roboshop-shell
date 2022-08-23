@@ -1,5 +1,4 @@
 COMPONENT=mysql
-
 source common.sh
 
  if [ -z "$MYSQL_PASSWORD" ]; then
