@@ -1,4 +1,4 @@
-COMPONENT=reddis
+COMPONENT=redis
 
 source common.sh
 
