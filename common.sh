@@ -33,7 +33,7 @@ id roboshop &>>${LOG}
  }
 SYSTEMD() {
  echo Update SystemD Cofg
- sed -i -e 's/MONGO_DNSNAME/mongodb-dev.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis-dev.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue-dev.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service &>> ${LOG}
+ sed -i -e 's/MONGO_DNSNAME/mongodb-dev.roboshop.internal/' -e 's/REDIS_ENDPOINT/redis-dev.roboshop.internal/' -e 's/CATALOGUE_ENDPOINT/catalogue-dev.roboshop.internal/' -e 's/MONGO_ENDPOINT/mongodb-dev.roboshop.internal/' -e 's/AMQPHOST/rabbitmq-dev.roboshop.internal/' -e 's/CARTHOST/cart-dev.roboshop.internal/' -e 's/USERHOST/user-dev.roboshop.internal/' -e 's/CARTENDPOINT/cart-dev.roboshop.internal/' -e 's/DBHOST/mysql-dev.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service &>> ${LOG}
  StatusCheck
 
  echo confirouing ${COMPONENT} systemD service
