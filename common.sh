@@ -32,7 +32,11 @@ id roboshop &>>${LOG}
  StatusCheck
  }
 SYSTEMD() {
-echo confirouing ${COMPONENT} systemD service
+ echo Update SystemD Cofg
+ sed -i -e 's/MONGO_DNSNAME/mongodb-dev.roboshop.internal/' /home/roboshop/${COMPONENT}/systemd.service
+ StatusCheck
+
+ echo confirouing ${COMPONENT} systemD service
  mv /home/roboshop/${COMPONENT}/systemd.service /etc/systemd/system/${COMPONENT}.service &>> ${LOG} && systemctl daemon-reload &>> ${LOG}
  StatusCheck
 
