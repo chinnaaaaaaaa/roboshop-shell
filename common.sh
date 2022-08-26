@@ -99,11 +99,29 @@ NODEJS() {
   SYSTEMD
   }
 
-USER_ID=$( id -u )
+  GOLANG() {
+  echo install Golang
+  yum install golang -y &>>${LOG}
+  StatusCheck
+
+   APP_USER_SETUP
+   DOWNLOAD
+   APP_CLEAN
+
+  echo Install Golang dependencies
+  go mod init dispatch &>>${LOG} && go get &>>${LOG} && go build &>>${LOG}
+  StatusCheck
+
+  SYSTEMD
+
+  }
+
+ USER_ID=$( id -u )
 if [ $USER_ID -ne 0 ]; then
   echo -e "\e[31m you should run this script as root user or sudo \e[0m"
   exit 1
 fi
 LOG=/tmp/${COMPONENT}.log
 rm -f ${LOG}
+
 
